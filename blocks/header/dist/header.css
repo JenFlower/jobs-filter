@@ -1,0 +1,25 @@
+.header {
+  height: 162px;
+  background-image: url("/images/header.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-color: #F2F2F2;
+  z-index: 2;
+}
+.header .header__content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  align-items: center;
+}
+.header .header__title {
+  margin: 0;
+  background-image: url("/images/devjobs.svg");
+  background-repeat: no-repeat;
+  background-size: 115px;
+  height: 32px;
+  width: 115px;
+}

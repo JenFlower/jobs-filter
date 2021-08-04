@@ -1,0 +1,52 @@
+.switch-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.switch-block .switch-block__day {
+  background-image: url("/images/shine.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+.switch-block .switch-block__night {
+  background-image: url("/images/moon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+}
+.switch-block .switch-block__switcher {
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  border-radius: 19px;
+  background: #fff;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 300ms;
+  margin: 0 16px;
+}
+.switch-block .switch-block__switcher::after {
+  background-color: #5964E0;
+  content: "";
+  height: 14px;
+  width: 14px;
+  border-radius: 17px;
+  top: 5px;
+  left: 5px;
+  transition-duration: 300ms;
+  position: absolute;
+  z-index: 1;
+}
+.switch-block .switch-block__switcher_on {
+  background: #fff;
+}
+.switch-block .switch-block__switcher_on::after {
+  left: 30px;
+}

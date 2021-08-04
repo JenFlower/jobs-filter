@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>devjobs</title>
+    <link rel="stylesheet" href="pages/index.css">
+    
 </head>
 <body>
-    
+    <header class="header">
+        <div class="header__content">
+            <h1 class="header__title"></h1>
+            <div class="switch-block">
+                <div class="switch-block__day"></div>
+                <div class="switch-block__switcher"></div>
+                <div class="switch-block__night"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <form class="filter">
+            <input class="filter__input filter__input_common" placeholder="Filter by title, companies, expertise…">
+            <input class="filter__input filter__input_location" placeholder="Filter by location…">
+            
+            <div class="filter__input filter__search">
+                <input class=" filter__input_full-time" type="checkbox" id="full-time">
+                <label for="full-time">Full Time Only</label>
+                <input type="submit" class="filter__input_submit" value="Search">
+            </div>
+        </form>
+
+        <section class="content">
+            <ul class="content__list">
+                <li class="content__item">
+                    <img class="content__image">
+                    <div class="content__info">
+                        <span class="content__posted_time">5</span>
+                        <span class="content__posted_clock">h</span>
+                        <span>ago</span>
+                        <img src="">
+                        <span class="content__shedule">Full Time</span>
+                    </div>
+                    <h2 class="content__vacation">Senior Software Engineer</h2>
+                    <span class="content__company">Scoot</span>
+                    <span class="content__location">United Kingdom</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+
+
+
+    <script src="/less.js"></script>
+    <script src="/pages/dist/index.dev.js"></script>
+
 </body>
 </html>
