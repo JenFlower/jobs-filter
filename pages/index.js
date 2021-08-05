@@ -44,6 +44,6 @@ switcher.addEventListener('click', (evt) => {
         })
 
         main.style.backgroundColor = "#F4F6F8"
-        header.style.backgroundColor = "#F4F6F8"
+        header.style.backgroundColor = "#F2F2F2"
     }
 })

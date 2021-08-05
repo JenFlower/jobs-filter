@@ -53,6 +53,6 @@ switcher.addEventListener('click', function (evt) {
       vacationHover(item, 'mouseout', "#19202D");
     });
     main.style.backgroundColor = "#F4F6F8";
-    header.style.backgroundColor = "#F4F6F8";
+    header.style.backgroundColor = "#F2F2F2";
   }
 });
