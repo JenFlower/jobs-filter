@@ -1,3 +1,43 @@
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .filter {
   min-width: 1100px;
   min-height: 80px;
@@ -19,7 +59,6 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 16px;
-  color: rgba(25, 32, 45, 0.5);
 }
 .filter .filter__input:active,
 .filter .filter__input:hover,
