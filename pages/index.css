@@ -1,8 +1,10 @@
 @import url(../vendor/normalize.css);
 @import url(../fonts/inter.css);
 
+@import url(../blocks/body/dist/body.css);
 @import url(../blocks/header/dist/header.css);
 @import url(../blocks/switch-block/dist/switch-block.css);
 @import url(../blocks/filter/dist/filter.css);
 @import url(../blocks/main/dist/main.css);
 @import url(../blocks/content/dist/content.css);
+@import url(../blocks/rotation/dist/rotation.css);

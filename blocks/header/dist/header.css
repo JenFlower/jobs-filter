@@ -1,11 +1,39 @@
 .header {
   height: 162px;
-  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%221440%22%20height%3D%22168%22%20viewBox%3D%220%200%201440%20168%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20filter%3D%22url(%23filter0_d)%22%3E%0A%3Cpath%20d%3D%22M1440%200H0V60C0%20115.228%2044.7715%20160%20100%20160H1440V0Z%22%20fill%3D%22%235964E0%22%2F%3E%0A%3Cmask%20id%3D%22mask0%22%20mask-type%3D%22alpha%22%20maskUnits%3D%22userSpaceOnUse%22%20x%3D%220%22%20y%3D%220%22%20width%3D%221440%22%20height%3D%22160%22%3E%0A%3Cpath%20d%3D%22M1440%200H0V60C0%20115.228%2044.7715%20160%20100%20160H1440V0Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fmask%3E%0A%3Cg%20mask%3D%22url(%23mask0)%22%3E%0A%3Cpath%20opacity%3D%220.0813802%22%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M1163.89%20-205.424C1185.01%20-229.387%201224.21%20-221.054%201233.77%20-190.571L1347.88%20173.592C1357.27%20203.528%201330.92%20232.479%201300.24%20225.956L933.748%20148.057C903.063%20141.535%20890.772%20104.372%20911.518%2080.8396L1163.89%20-205.424Z%22%20fill%3D%22white%22%2F%3E%0A%3Cpath%20opacity%3D%220.0813802%22%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M254.539%20-323.259C251.422%20-355.051%20284.25%20-378.038%20313.059%20-364.235L657.22%20-199.336C685.511%20-185.781%20688.718%20-146.77%20663.02%20-128.776L356.104%2086.1288C330.406%20104.123%20294.845%2087.7662%20291.783%2056.5449L254.539%20-323.259Z%22%20fill%3D%22white%22%2F%3E%0A%3Cpath%20opacity%3D%220.0813802%22%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M-71.4609%2071.7414C-74.5785%2039.9489%20-41.7496%2016.9619%20-12.9407%2030.7652L331.22%20195.664C359.511%20209.219%20362.718%20248.23%20337.02%20266.224L30.1041%20481.129C4.4064%20499.123%20-31.1552%20482.766%20-34.2168%20451.545L-71.4609%2071.7414Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3Cdefs%3E%0A%3Cfilter%20id%3D%22filter0_d%22%20x%3D%22-4%22%20y%3D%220%22%20width%3D%221448%22%20height%3D%22168%22%20filterUnits%3D%22userSpaceOnUse%22%20color-interpolation-filters%3D%22sRGB%22%3E%0A%3CfeFlood%20flood-opacity%3D%220%22%20result%3D%22BackgroundImageFix%22%2F%3E%0A%3CfeColorMatrix%20in%3D%22SourceAlpha%22%20type%3D%22matrix%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200%22%20result%3D%22hardAlpha%22%2F%3E%0A%3CfeOffset%20dy%3D%224%22%2F%3E%0A%3CfeGaussianBlur%20stdDeviation%3D%222%22%2F%3E%0A%3CfeComposite%20in2%3D%22hardAlpha%22%20operator%3D%22out%22%2F%3E%0A%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.25%200%22%2F%3E%0A%3CfeBlend%20mode%3D%22normal%22%20in2%3D%22BackgroundImageFix%22%20result%3D%22effect1_dropShadow%22%2F%3E%0A%3CfeBlend%20mode%3D%22normal%22%20in%3D%22SourceGraphic%22%20in2%3D%22effect1_dropShadow%22%20result%3D%22shape%22%2F%3E%0A%3C%2Ffilter%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #5964E0;
+  border-radius: 0 0 0 100px;
+  overflow: hidden;
   position: relative;
-  background-color: #F2F2F2;
   z-index: 2;
+}
+.header .header__triangle {
+  position: absolute;
+  opacity: 0.2;
+}
+.header .header__triangle_first {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 317.5px 0 317.5px 635px;
+  border-color: transparent transparent transparent #ffffff;
+}
+.header .header__triangle_second {
+  left: 40%;
+  top: -330%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 317.5px 0 317.5px 635px;
+  border-color: transparent transparent transparent #ffffff;
+}
+.header .header__triangle_third {
+  top: 80%;
+  right: -10%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 317.5px 0 317.5px 635px;
+  border-color: transparent transparent transparent #ffffff;
 }
 .header .header__content {
   display: flex;

@@ -4,7 +4,6 @@
   margin: 0 auto;
   display: grid;
   grid-template-areas: "common common common common location search";
-  background-color: #fff;
   border-radius: 16px;
   position: absolute;
   z-index: 3;
@@ -13,6 +12,7 @@
   box-sizing: border-box;
 }
 .filter .filter__input {
+  background-color: #fff;
   display: flex;
   border: none;
   font-family: KumbhSansRegular, Arial, Helvetica, sans-serif;
@@ -51,6 +51,9 @@
   padding: 16px 36px;
   border-radius: 5px;
   cursor: pointer;
+}
+.filter .filter__input_submit:hover {
+  background-color: #939BF4;
 }
 .filter .filter__input_full-time {
   position: absolute;

@@ -44,6 +44,9 @@
   position: absolute;
   z-index: 1;
 }
+.switch-block .switch-block__switcher:hover::after {
+  background-color: #939BF4;
+}
 .switch-block .switch-block__switcher_on {
   background: #fff;
 }

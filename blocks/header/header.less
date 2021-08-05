@@ -1,12 +1,43 @@
 
 .header {
     height: 162px;
-    background-image: data-uri("../../images/header.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #5964E0;
+    border-radius: 0 0 0 100px;
+    overflow: hidden;
     position: relative;
-    background-color: #F2F2F2;
     z-index: 2;
+
+    .header__triangle {
+        position: absolute;
+        opacity: .2;
+        &_first {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 317.5px 0 317.5px 635px;
+            border-color: transparent transparent transparent #ffffff;
+        }
+
+        &_second {
+            left: 40%;
+            top: -330%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 317.5px 0 317.5px 635px;
+            border-color: transparent transparent transparent #ffffff;
+        }
+
+        &_third {
+            top: 80%;
+            right: -10%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 317.5px 0 317.5px 635px;
+            border-color: transparent transparent transparent #ffffff;
+        }
+    }
 
     .header__content {
         display: flex;
