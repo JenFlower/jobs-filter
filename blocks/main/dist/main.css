@@ -1,0 +1,16 @@
+.main {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.main .main__content {
+  position: relative;
+  max-width: 1100px;
+  box-sizing: content-box;
+  margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+  .main {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}

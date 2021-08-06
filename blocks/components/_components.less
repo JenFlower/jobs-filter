@@ -22,35 +22,3 @@
     border-left: 1px rgba(110, 128, 152, .2) solid;
     border-right: 1px rgba(110, 128, 152, .2) solid;
 }
-
-// .rotation
-.keyframes(@name,@rules) {
-    @-webkit-keyframes @name {
-        @rules();
-    }
-
-    @-moz-keyframes @name {
-        @rules();
-    }
-
-    @-ms-keyframes @name {
-        @rules();
-    }
-
-    @-o-keyframes @name {
-        @rules();
-    }
-
-    @keyframes @name {
-        @rules();
-    }
-}
-
-.keyframes(rotation, {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-});

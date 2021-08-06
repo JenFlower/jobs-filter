@@ -1,58 +1,20 @@
-@-webkit-keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-moz-keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-ms-keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .filter {
-  min-width: 1100px;
+  width: 100%;
   min-height: 80px;
   margin: 0 auto;
   display: grid;
-  grid-template-areas: "common common common common location search";
+  grid-template-areas: "common location search";
+  grid-template-columns: auto 25% 30%;
   border-radius: 16px;
   position: absolute;
-  z-index: 3;
+  z-index: 5;
   left: 50%;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
 }
 .filter .filter__input {
   background-color: #fff;
+  text-overflow: ellipsis;
   display: flex;
   border: none;
   font-family: KumbhSansRegular, Arial, Helvetica, sans-serif;
@@ -68,11 +30,20 @@
 }
 .filter .filter__input_common {
   border-radius: 10px 0 0 10px;
-  grid-area: common;
   background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M16.024%2015.0588H17.1123L23.9435%2021.9037L21.9037%2023.9435L15.0588%2017.1123V16.0308L14.6824%2015.6544C13.1286%2016.9891%2011.1093%2017.7968%208.89842%2017.7968C3.98374%2017.7968%200%2013.8131%200%208.89842C0%203.98374%203.98381%200%208.89842%200C13.813%200%2017.7968%203.98374%2017.7968%208.89842C17.7968%2011.1093%2016.9891%2013.1286%2015.6475%2014.6824L16.024%2015.0588ZM2.73799%208.89842C2.73799%2012.3003%205.49651%2015.0588%208.89842%2015.0588C12.3003%2015.0588%2015.0588%2012.3003%2015.0588%208.89842C15.0588%205.49651%2012.3003%202.73799%208.89842%202.73799C5.49651%202.73799%202.73799%205.49651%202.73799%208.89842Z%22%20fill%3D%22%235964E0%22%2F%3E%0A%3C%2Fsvg%3E%0A");
   background-repeat: no-repeat;
   background-position: 32px center;
   padding: 28px 72px;
+}
+@media screen and (max-width: 900px) {
+  .filter .filter__input_common {
+    margin-right: 20px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 0;
+    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M19.1076%201.50591e-06H0.860224C0.538187%20-0.000593357%200.243138%200.175089%200.0960199%200.454871C-0.0531279%200.738422%20-0.0269509%201.07987%200.163593%201.33883L6.84866%2010.5411C6.85089%2010.5443%206.85333%2010.5473%206.85556%2010.5504C7.09845%2010.8709%207.22995%2011.2591%207.23056%2011.6579V19.1605C7.22914%2019.3825%207.31842%2019.5961%207.47853%2019.7537C7.63884%2019.9112%207.85677%2020%208.08405%2020C8.19951%2019.9998%208.31396%2019.9774%208.4207%2019.934L12.1772%2018.5345C12.5136%2018.4339%2012.7371%2018.1236%2012.7371%2017.75V11.6579C12.7377%2011.2591%2012.8692%2010.8709%2013.1118%2010.5504C13.1141%2010.5473%2013.1165%2010.5443%2013.1187%2010.5411L19.804%201.33864C19.9946%201.07987%2020.0207%200.73862%2019.8716%200.45507C19.7247%200.175089%2019.4294%20-0.000593357%2019.1076%201.50591e-06Z%22%20fill%3D%22%236E8098%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+    background-position: right;
+  }
 }
 .filter .filter__input_location {
   grid-area: location;
@@ -82,6 +53,11 @@
   padding: 28px 72px;
   border-left: 1px rgba(110, 128, 152, 0.2) solid;
   border-right: 1px rgba(110, 128, 152, 0.2) solid;
+}
+@media screen and (max-width: 900px) {
+  .filter .filter__input_location {
+    display: none;
+  }
 }
 .filter .filter__input_submit {
   border: none;
@@ -93,6 +69,20 @@
 }
 .filter .filter__input_submit:hover {
   background-color: #939BF4;
+}
+.filter .filter__input_submit_companies {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .filter .filter__input_submit_companies {
+    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M13.3533%2012.549H14.2603L19.9529%2018.2531L18.2531%2019.9529L12.549%2014.2603V13.359L12.2353%2013.0453C10.9405%2014.1576%209.25775%2014.8307%207.41535%2014.8307C3.31979%2014.8307%200%2011.5109%200%207.41535C0%203.31979%203.31984%200%207.41535%200C11.5109%200%2014.8306%203.31979%2014.8306%207.41535C14.8306%209.25775%2014.1576%2010.9405%2013.0396%2012.2353L13.3533%2012.549ZM2.28166%207.41535C2.28166%2010.2503%204.58043%2012.549%207.41535%2012.549C10.2503%2012.549%2012.549%2010.2503%2012.549%207.41535C12.549%204.58043%2010.2503%202.28166%207.41535%202.28166C4.58043%202.28166%202.28166%204.58043%202.28166%207.41535Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+  }
 }
 .filter .filter__input_full-time {
   position: absolute;
@@ -126,12 +116,43 @@
   background-color: #5964E0;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
 }
+@media screen and (max-width: 900px) {
+  .filter .filter__input {
+    padding: 0;
+  }
+}
 .filter .filter__search {
-  display: flex;
   justify-content: space-between;
   grid-area: search;
   padding: 16px;
   border-radius: 0 10px 10px 0;
   font-family: KumbhSansBold, Arial, Helvetica, sans-serif;
   font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+  .filter .filter__search {
+    display: none;
+  }
+}
+.filter .filter__common {
+  grid-area: common;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 900px) {
+  .filter .filter__common {
+    padding: 28px 24px;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .filter {
+    grid-template-columns: auto 25% 1fr;
+  }
+}
+@media screen and (max-width: 900px) {
+  .filter {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "common";
+  }
 }

@@ -9,6 +9,13 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+@media screen and (max-width: 900px) {
+  .header .header__layer {
+    border-radius: 0;
+  }
 }
 .header .header__triangle {
   position: absolute;
