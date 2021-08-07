@@ -1,0 +1,111 @@
+[
+    {
+        "time": 5,
+        "clock": "h",
+        "graphik": "Full Time",
+        "vacation": "Senior Software Engineer",
+        "company": "Scoot",
+        "location": "United Kingdom",
+        "img": "images/scoot.svg"
+    },
+    {
+        "time": 20,
+        "clock": "h",
+        "graphik": "Part Time",
+        "vacation": "Haskell and PureScript Dev",
+        "company": "Blogr",
+        "location": "United States",
+        "img": "images/blogr.svg"
+    },
+    {
+        "time": 1,
+        "clock": "d",
+        "graphik": "Part Time",
+        "vacation": "Midlevel Back End Engineer",
+        "company": "Vector",
+        "location": "Russia",
+        "img": "images/vector.svg"
+    },
+    {
+        "time": 2,
+        "clock": "d",
+        "graphik": "Full Time",
+        "vacation": "Senior Application Engineer",
+        "company": "Office Lite",
+        "location": "Japan",
+        "img": "images/officeLite.svg"
+    },
+    {
+        "time": 2,
+        "clock": "d",
+        "graphik": "Part Time",
+        "vacation": "Remote DevOps Engineer",
+        "company": "Pod",
+        "location": "Thailand",
+        "img": "images/pod.svg"
+    },
+    {
+        "time": 4,
+        "clock": "d",
+        "graphik": "Part Time",
+        "vacation": "Desktop Support Manager",
+        "company": "Creative",
+        "location": "Germany",
+        "img": "images/creative.svg"
+    },
+    {
+        "time": 1,
+        "clock": "w",
+        "graphik": "Full Time",
+        "vacation": "iOS Engineer",
+        "company": "Pomodoro",
+        "location": "United States",
+        "img": "images/pomodoro.svg"
+    },
+    {
+        "time": 1,
+        "clock": "w",
+        "graphik": "Part Time",
+        "vacation": "Senior Frontend Developer",
+        "company": "Coffeeroasters",
+        "location": "Singapore",
+        "img": "images/coffeeroasters.svg"
+    },
+    {
+        "time": 2,
+        "clock": "w",
+        "graphik": "Freelance",
+        "vacation": "App & Website Designer",
+        "company": "Mastercraft",
+        "location": "United States",
+        "img": "images/mastercraft.svg"
+    },
+    {
+        "time": 1,
+        "clock": "mo",
+        "graphik": "Part Time",
+        "vacation": "Fullstack Developer",
+        "company": "Crowdfund",
+        "location": "New Zeland",
+        "img": "images/crowdfund.svg"
+    },
+    {
+        "time": 4,
+        "clock": "d",
+        "graphik": "Part Time",
+        "vacation": "Technical Lead Engineer",
+        "company": "Typemaster",
+        "location": "United Kingdom",
+        "img": "images/typemaster.svg"
+    },
+    {
+        "time": 2,
+        "clock": "d",
+        "graphik": "Full Time",
+        "vacation": "Senior EJB Developer",
+        "company": "Maker",
+        "location": "United Kingdom",
+        "img": "images/maker.svg"
+    }
+
+]
