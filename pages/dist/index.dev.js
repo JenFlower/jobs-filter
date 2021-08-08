@@ -21,6 +21,9 @@ var main = document.querySelector('.main');
 var header = document.querySelector('.header');
 var vacations = Array.from(document.querySelectorAll('#content-item'));
 var contentVacationList = document.querySelector('.content__list');
+var checkFullTime = document.querySelector('.filter__input_full-time');
+var inputLocation = document.querySelector('.filter__input_location');
+var commonFilter = document.querySelector('.filter__input_common');
 
 function createVacation(item) {
   var templateVacation = document.querySelector('#content-template').content.querySelector('#content-item');
@@ -46,23 +49,52 @@ function addVacation(item) {
   return contentVacationList.prepend(item);
 }
 
+var api = new _Api["default"]();
+
 function getData() {
-  var api = new _Api["default"]();
   api.getData().then(function (res) {
     return renderCountData(res, 0, 12);
-  }).then(function (res) {
-    res.forEach(function (item) {
-      addVacation(createVacation(item));
-    });
-  });
+  }); // .then(res => {
+  //     res.forEach(item => {  
+  //         addVacation(createVacation(item))
+  //     })
+  // })
 }
 
 getData(); // количество отображаемых карточек
 
 function renderCountData(res, from) {
   var to = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
+  contentVacationList.innerHTML = '';
+  res.forEach(function (item) {
+    addVacation(createVacation(item));
+  });
   return res.slice(from, to);
 }
+
+function actualFilterStatus() {
+  return {
+    fulltime: checkFullTime.checked,
+    location: inputLocation.value,
+    common: commonFilter.value
+  }; // api.getData() 
+  //     .then(res => {return res.filter(x => x.graphik === 'Full Time')})
+  //     .then(res => console.log(res))
+}
+
+checkFullTime.addEventListener('click', function () {
+  if (actualFilterStatus().fulltime === true) {
+    api.getData().then(function (res) {
+      return res.filter(function (x) {
+        return x.graphik === 'Full Time';
+      });
+    }).then(function (res) {
+      return renderCountData(res, 0, 12);
+    });
+  } else {
+    getData();
+  }
+});
 
 function vacationHover(item, mouse, colorName) {
   item.querySelector('.content__vacation').addEventListener(mouse, function (evt) {
@@ -71,8 +103,7 @@ function vacationHover(item, mouse, colorName) {
 }
 
 switcher.addEventListener('click', function (evt) {
-  evt.target.classList.toggle('switch-block__switcher_on');
-  console.log(vacations);
+  evt.target.classList.toggle('switch-block__switcher_on'); // console.log(vacations)
 
   if (evt.target.classList.contains('switch-block__switcher_on')) {
     filterInput.forEach(function (item) {
@@ -81,8 +112,8 @@ switcher.addEventListener('click', function (evt) {
     });
     document.querySelectorAll('#content-item').forEach(function (item) {
       item.querySelector('.content__vacation').style.color = "#fff";
-      item.style.backgroundColor = "#19202D";
-      console.log(item);
+      item.style.backgroundColor = "#19202D"; // console.log(item)
+
       vacationHover(item, 'mouseover', "#6E8098");
       vacationHover(item, 'mouseout', "#fff");
     });
@@ -92,12 +123,12 @@ switcher.addEventListener('click', function (evt) {
     filterInput.forEach(function (item) {
       item.style.backgroundColor = "#fff";
       item.style.color = "#19202D";
-    });
-    console.log(vacations);
+    }); // console.log(vacations)
+
     document.querySelectorAll('#content-item').forEach(function (item) {
       item.querySelector('.content__vacation').style.color = "#19202D";
-      item.style.backgroundColor = "#fff";
-      console.log(item);
+      item.style.backgroundColor = "#fff"; // console.log(item)
+
       vacationHover(item, 'mouseover', "#6E8098");
       vacationHover(item, 'mouseout', "#19202D");
     });
