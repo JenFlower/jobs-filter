@@ -4,7 +4,7 @@ export default class Api {
     }
 
     getData() {
-        return fetch('/data.json')
+        return fetch('data.json')
             .then(this._checkResponse)
     }
 }

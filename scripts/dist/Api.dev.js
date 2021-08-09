@@ -26,7 +26,7 @@ function () {
   }, {
     key: "getData",
     value: function getData() {
-      return fetch('/data.json').then(this._checkResponse);
+      return fetch('data.json').then(this._checkResponse);
     }
   }]);
 
