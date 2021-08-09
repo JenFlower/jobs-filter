@@ -23,7 +23,10 @@ var vacations = Array.from(document.querySelectorAll('#content-item'));
 var contentVacationList = document.querySelector('.content__list');
 var checkFullTime = document.querySelector('.filter__input_full-time');
 var inputLocation = document.querySelector('.filter__input_location');
-var commonFilter = document.querySelector('.filter__input_common');
+var commonFilter = document.querySelector('.filter__input_common'); // const btnSearch = document.querySelector('.filter__submit_common')
+
+var btnSearch = _toConsumableArray(document.querySelectorAll('.filter__input_submit')); // console.log(btnSearch)
+
 
 function createVacation(item) {
   var templateVacation = document.querySelector('#content-template').content.querySelector('#content-item');
@@ -43,7 +46,9 @@ function createVacation(item) {
   var location = vacation.querySelector('.content__location');
   location.textContent = item.location;
   return vacation;
-}
+} // todo
+// не работает слайс
+
 
 function addVacation(item) {
   return contentVacationList.prepend(item);
@@ -51,17 +56,13 @@ function addVacation(item) {
 
 var api = new _Api["default"]();
 
-function getData() {
+function getStartedData() {
   api.getData().then(function (res) {
     return renderCountData(res, 0, 12);
-  }); // .then(res => {
-  //     res.forEach(item => {  
-  //         addVacation(createVacation(item))
-  //     })
-  // })
+  });
 }
 
-getData(); // количество отображаемых карточек
+getStartedData(); // количество отображаемых карточек
 
 function renderCountData(res, from) {
   var to = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
@@ -77,23 +78,30 @@ function actualFilterStatus() {
     fulltime: checkFullTime.checked,
     location: inputLocation.value,
     common: commonFilter.value
-  }; // api.getData() 
-  //     .then(res => {return res.filter(x => x.graphik === 'Full Time')})
-  //     .then(res => console.log(res))
+  };
 }
 
-checkFullTime.addEventListener('click', function () {
-  if (actualFilterStatus().fulltime === true) {
+function filterData(res) {
+  if (actualFilterStatus().fulltime) {
+    return res.filter(function (x) {
+      return (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) && x.location.includes(actualFilterStatus().location) && x.graphik === 'Full Time';
+    });
+  } else {
+    return res.filter(function (x) {
+      return (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) && x.location.includes(actualFilterStatus().location);
+    });
+  }
+}
+
+btnSearch.forEach(function (item) {
+  return item.addEventListener('click', function (evt) {
+    evt.preventDefault();
     api.getData().then(function (res) {
-      return res.filter(function (x) {
-        return x.graphik === 'Full Time';
-      });
+      return filterData(res);
     }).then(function (res) {
       return renderCountData(res, 0, 12);
     });
-  } else {
-    getData();
-  }
+  });
 });
 
 function vacationHover(item, mouse, colorName) {

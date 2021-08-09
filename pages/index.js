@@ -10,7 +10,9 @@ const contentVacationList = document.querySelector('.content__list')
 const checkFullTime = document.querySelector('.filter__input_full-time')
 const inputLocation = document.querySelector('.filter__input_location')
 const commonFilter = document.querySelector('.filter__input_common')
-
+// const btnSearch = document.querySelector('.filter__submit_common')
+const btnSearch = [...document.querySelectorAll('.filter__input_submit')]
+// console.log(btnSearch)
 function createVacation(item) {
     const templateVacation = document.querySelector('#content-template').content.querySelector('#content-item')
     const vacation = templateVacation.cloneNode(true)
@@ -32,23 +34,22 @@ function createVacation(item) {
     return vacation
 }
 
+// todo
+// не работает слайс
+
+
 function addVacation(item) {
     return contentVacationList.prepend(item)
 }
 const api = new Api()
-function getData() {
-    
+
+function getStartedData() {
     api.getData()
         .then(res => {
             return renderCountData(res, 0, 12)
         })
-        // .then(res => {
-        //     res.forEach(item => {  
-        //         addVacation(createVacation(item))
-        //     })
-        // })
 }
-getData()
+getStartedData()
 
 // количество отображаемых карточек
 function renderCountData(res, from, to = 5) {
@@ -65,27 +66,41 @@ function actualFilterStatus() {
         location: inputLocation.value,
         common: commonFilter.value
     }
-    // api.getData() 
-    //     .then(res => {return res.filter(x => x.graphik === 'Full Time')})
-    //     .then(res => console.log(res))
 }
 
-checkFullTime.addEventListener('click', () => {
-    if(actualFilterStatus().fulltime === true) {
-        api.getData() 
-            .then(res => {return res.filter(x => x.graphik === 'Full Time')})
-            .then(res => renderCountData(res, 0, 12))
+function filterData(res) {
+    if(actualFilterStatus().fulltime) {
+        return res.filter(x => 
+            (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) &&
+            
+            x.location.includes(actualFilterStatus().location) &&
+            x.graphik === 'Full Time')
     }
     else {
-        getData()
+        return res.filter(x => 
+            (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) &&
+         x.location.includes(actualFilterStatus().location) )
+           
     }
-})
+    
+}
+
+
+
+btnSearch.forEach(item => item.addEventListener('click', (evt) => {
+    evt.preventDefault()
+    api.getData()
+        .then(res => filterData(res))
+        .then(res => renderCountData(res, 0, 12))
+}))
 
 function vacationHover(item, mouse, colorName) {
     item.querySelector('.content__vacation').addEventListener(mouse, (evt) => {
         evt.target.style.color = colorName
     })
 }
+
+
 
 switcher.addEventListener('click', (evt) => {
     evt.target.classList.toggle('switch-block__switcher_on')

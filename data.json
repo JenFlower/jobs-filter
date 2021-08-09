@@ -9,6 +9,24 @@
         "img": "images/scoot.svg"
     },
     {
+        "time": 5,
+        "clock": "h",
+        "graphik": "Part Time",
+        "vacation": "Senior Software Engineer",
+        "company": "Scoot",
+        "location": "United Kingdom",
+        "img": "images/scoot.svg"
+    },
+    {
+        "time": 5,
+        "clock": "h",
+        "graphik": "Full Time",
+        "vacation": "Senior Software Engineer",
+        "company": "Scoot",
+        "location": "United States",
+        "img": "images/scoot.svg"
+    },
+    {
         "time": 20,
         "clock": "h",
         "graphik": "Part Time",
