@@ -37,26 +37,31 @@ function createVacation(item) {
 // todo
 // не работает слайс
 
+const api = new Api()
 
 function addVacation(item) {
-    return contentVacationList.prepend(item)
+    return contentVacationList.append(item)
 }
-const api = new Api()
 
 function getStartedData() {
     api.getData()
         .then(res => {
             return renderCountData(res, 0, 12)
         })
+        .then(res => res.forEach(item => {
+            addVacation(createVacation(item))
+        }))
 }
 getStartedData()
+
+
 
 // количество отображаемых карточек
 function renderCountData(res, from, to = 5) {
     contentVacationList.innerHTML = ''
-    res.forEach(item => {
-        addVacation(createVacation(item))
-    })
+    // res.forEach(item => {
+    //     addVacation(createVacation(item))
+    // })
     return res.slice(from, to)
 }
 
@@ -79,7 +84,6 @@ function filterData(res) {
         return res.filter(x => 
             (x.vacation.toUpperCase().includes(actualFilterStatus().common.toUpperCase()) || x.company.toUpperCase().includes(actualFilterStatus().common.toUpperCase())) &&
             x.location.toUpperCase().includes(actualFilterStatus().location.toUpperCase()) )
-           
     }
     
 }

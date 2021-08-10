@@ -50,15 +50,19 @@ function createVacation(item) {
 // не работает слайс
 
 
-function addVacation(item) {
-  return contentVacationList.prepend(item);
-}
-
 var api = new _Api["default"]();
+
+function addVacation(item) {
+  return contentVacationList.append(item);
+}
 
 function getStartedData() {
   api.getData().then(function (res) {
     return renderCountData(res, 0, 12);
+  }).then(function (res) {
+    return res.forEach(function (item) {
+      addVacation(createVacation(item));
+    });
   });
 }
 
@@ -66,10 +70,10 @@ getStartedData(); // количество отображаемых карточ�
 
 function renderCountData(res, from) {
   var to = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
-  contentVacationList.innerHTML = '';
-  res.forEach(function (item) {
-    addVacation(createVacation(item));
-  });
+  contentVacationList.innerHTML = ''; // res.forEach(item => {
+  //     addVacation(createVacation(item))
+  // })
+
   return res.slice(from, to);
 }
 
