@@ -71,15 +71,14 @@ function actualFilterStatus() {
 function filterData(res) {
     if(actualFilterStatus().fulltime) {
         return res.filter(x => 
-            (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) &&
-            
-            x.location.includes(actualFilterStatus().location) &&
+            (x.vacation.toUpperCase().includes(actualFilterStatus().common.toUpperCase()) || x.company.toUpperCase().includes(actualFilterStatus().common.toUpperCase())) &&
+            x.location.toUpperCase().includes(actualFilterStatus().location.toUpperCase()) &&
             x.graphik === 'Full Time')
     }
     else {
         return res.filter(x => 
-            (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) &&
-         x.location.includes(actualFilterStatus().location) )
+            (x.vacation.toUpperCase().includes(actualFilterStatus().common.toUpperCase()) || x.company.toUpperCase().includes(actualFilterStatus().common.toUpperCase())) &&
+            x.location.toUpperCase().includes(actualFilterStatus().location.toUpperCase()) )
            
     }
     

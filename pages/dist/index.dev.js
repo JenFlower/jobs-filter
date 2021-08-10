@@ -84,11 +84,11 @@ function actualFilterStatus() {
 function filterData(res) {
   if (actualFilterStatus().fulltime) {
     return res.filter(function (x) {
-      return (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) && x.location.includes(actualFilterStatus().location) && x.graphik === 'Full Time';
+      return (x.vacation.toUpperCase().includes(actualFilterStatus().common.toUpperCase()) || x.company.toUpperCase().includes(actualFilterStatus().common.toUpperCase())) && x.location.toUpperCase().includes(actualFilterStatus().location.toUpperCase()) && x.graphik === 'Full Time';
     });
   } else {
     return res.filter(function (x) {
-      return (x.vacation.includes(actualFilterStatus().common) || x.company.includes(actualFilterStatus().common)) && x.location.includes(actualFilterStatus().location);
+      return (x.vacation.toUpperCase().includes(actualFilterStatus().common.toUpperCase()) || x.company.toUpperCase().includes(actualFilterStatus().common.toUpperCase())) && x.location.toUpperCase().includes(actualFilterStatus().location.toUpperCase());
     });
   }
 }
