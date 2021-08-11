@@ -37,17 +37,23 @@
             background-position: 32px center;
             padding: 28px 72px;
             @media screen and (max-width: 900px) {
-                margin-right: 20px;
+                // margin-right: 20px;
                 width: 100%;
                 border-radius: 16px;
                 padding: 0;
-                background-image: data-uri("../../images/filterBtn.svg");
-                background-position: right;
+                background-image: none;
+                padding: 15px 15px;
+                // background-position: right;
             }
+        }
 
-            // @media screen and (max-width: 900px) {
-                
-            // }
+        &_modal {
+            cursor: pointer;
+            display: none;
+            @media screen and (max-width: 900px) {
+                display: block;
+                margin-right: 20px;
+            }
         }
     
         &_location {

@@ -26,6 +26,8 @@ var commonFilter = document.querySelector('.filter__input_common');
 
 var btnSearch = _toConsumableArray(document.querySelectorAll('.filter__input_submit'));
 
+var btnModal = document.querySelector('.filter__input_modal');
+
 function createVacation(item) {
   var templateVacation = document.querySelector('#content-template').content.querySelector('#content-item');
   var vacation = templateVacation.cloneNode(true);
@@ -130,5 +132,7 @@ btnSearch.forEach(function (item) {
     evt.preventDefault();
     drawCards();
   });
-});
+}); // btnModal.addEventListener(() => {
+// })
+
 drawCards();

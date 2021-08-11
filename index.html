@@ -33,6 +33,7 @@
             <form class="filter">
                 <div class="filter__input filter__common">
                     <input class="filter__input filter__input_common" placeholder="Filter by title and companies">
+                    <img class="filter__input_modal" src="images/filterBtn.svg" alt="filter">
                     <input type="submit" class="filter__input_submit filter__input_submit_companies" value=""></input>
                 </div>
                 
@@ -48,11 +49,25 @@
             <section class="content">
                 <ul class="content__list"></ul>
     
-                <!-- <button class="content__btn-loader">Load More</button> -->
             </section>
         </div>
         
     </main>
+
+    <section class="modal">
+        <!-- <div class="modal__cover"> -->
+            <form class="filter modal__filter">             
+                <input class="filter__input filter__input_location modal__location" placeholder="Filter by location">
+                
+                <div type="input" class="modal__search">
+                    <input class="filter__input filter__input_full-time modal__fulltime" type="checkbox" id="full-time">
+                    <label for="full-time">Full Time Only</label>
+                    <input type="button" class="filter__input filter__input_submit filter__submit_common modal__submit" value="Search">
+                </div>
+            </form>
+        <!-- </div> -->
+    </section>
+
 
     <template id="content-template">
         <li class="content__item" id="content-item">

@@ -11,6 +11,7 @@ const checkFullTime = document.querySelector('.filter__input_full-time')
 const inputLocation = document.querySelector('.filter__input_location')
 const commonFilter = document.querySelector('.filter__input_common')
 const btnSearch = [...document.querySelectorAll('.filter__input_submit')]
+const btnModal = document.querySelector('.filter__input_modal')
 
 function createVacation(item) {
     const templateVacation = document.querySelector('#content-template').content.querySelector('#content-item')
@@ -126,6 +127,9 @@ btnSearch.forEach(item => item.addEventListener('click', (evt) => {
     evt.preventDefault()
     drawCards()
 }))
+
+// btnModal.addEventListener(() => {
+// })
 
 
 drawCards()

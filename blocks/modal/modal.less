@@ -1,0 +1,52 @@
+.modal {
+    justify-content: center;
+    align-items: center;
+    // display: flex;
+    display: none;
+
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    // outline: 1px red solid;
+
+    &__filter {
+        border-radius: 5px;
+        margin: 0 auto;
+        // outline: 1px red solid;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        width: calc(430px - (36px * 2));
+        background-color: white;
+        // padding: 34px 36px 37px 36px;
+        border-radius: 10px;
+        
+    }
+    &__search {
+        margin: 24px;
+    }
+
+    &__fulltime {
+        outline: 1px green solid;
+        margin-top: 24px;
+        
+    }
+
+    &__submit {
+        width: 100%;
+        margin-top: 24px;
+        justify-content: center;
+        
+    }
+
+    &__location {
+        border-bottom: 1px rgba(0, 0, 0, .5) solid !important;
+        position: relative;
+        border-radius: 10px 10px 0 0;
+        // width: 100%;
+    }
+}
