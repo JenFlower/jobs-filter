@@ -12,6 +12,8 @@ const inputLocation = document.querySelector('.filter__input_location')
 const commonFilter = document.querySelector('.filter__input_common')
 // const btnSearch = document.querySelector('.filter__submit_common')
 const btnSearch = [...document.querySelectorAll('.filter__input_submit')]
+const btnLoader = document.querySelector('.content__btn-loader')
+
 // console.log(btnSearch)
 function createVacation(item) {
     const templateVacation = document.querySelector('#content-template').content.querySelector('#content-item')
@@ -46,15 +48,54 @@ function addVacation(item) {
 function getStartedData() {
     api.getData()
         .then(res => {
+            loaderHandler(res)
             return renderCountData(res, 0, 12)
         })
         .then(res => res.forEach(item => {
             addVacation(createVacation(item))
+            
         }))
 }
+
+// function getMoreData() {
+//     api.getData()
+//         .then(res => {
+//             loaderHandler(res)
+//             // return renderCountData(res, 0, 12)
+//         })
+//         // .then(res => res.forEach(item => {
+//         //     addVacation(createVacation(item))
+            
+//         // }))
+// }
+
 getStartedData()
 
 
+function loaderHandler(res) {
+    if(res.length <= 12)
+        btnLoader.style.display = 'none'
+    // else {
+        
+        
+    // }
+    
+}
+
+// слайс не работает
+btnLoader.addEventListener('click', () => {
+    let actualCountCards = Number(document.querySelectorAll('#content-item').length)
+    console.log(actualCountCards) //12
+    // getStartedData()
+    api.getData()
+        .then(res => filterData(res))
+        // .then(res => console.log(res))  //15
+        .then(res => res.slice(actualCountCards, 12))   //15
+        // .then(res => console.log(res))
+        .then(res => res.forEach(item => {
+            addVacation(createVacation(item))
+        }))
+})
 
 // количество отображаемых карточек
 function renderCountData(res, from, to = 5) {
@@ -64,6 +105,8 @@ function renderCountData(res, from, to = 5) {
     // })
     return res.slice(from, to)
 }
+
+
 
 function actualFilterStatus() {
     return {
@@ -88,13 +131,17 @@ function filterData(res) {
     
 }
 
-
-
 btnSearch.forEach(item => item.addEventListener('click', (evt) => {
     evt.preventDefault()
     api.getData()
         .then(res => filterData(res))
-        .then(res => renderCountData(res, 0, 12))
+        .then(res => {
+            return renderCountData(res, 0, 12)
+        })
+        .then(res => res.forEach(item => {
+            addVacation(createVacation(item))
+        }))
+        
 }))
 
 function vacationHover(item, mouse, colorName) {
@@ -113,7 +160,9 @@ switcher.addEventListener('click', (evt) => {
             item.style.backgroundColor = "#19202D"
             item.style.color = "#fff"
         })
+        
         document.querySelectorAll('#content-item').forEach(item => {
+            // console.log(item)
             item.querySelector('.content__vacation').style.color = "#fff"
             item.style.backgroundColor = "#19202D"
             // console.log(item)

@@ -25,8 +25,9 @@ var checkFullTime = document.querySelector('.filter__input_full-time');
 var inputLocation = document.querySelector('.filter__input_location');
 var commonFilter = document.querySelector('.filter__input_common'); // const btnSearch = document.querySelector('.filter__submit_common')
 
-var btnSearch = _toConsumableArray(document.querySelectorAll('.filter__input_submit')); // console.log(btnSearch)
+var btnSearch = _toConsumableArray(document.querySelectorAll('.filter__input_submit'));
 
+var btnLoader = document.querySelector('.content__btn-loader'); // console.log(btnSearch)
 
 function createVacation(item) {
   var templateVacation = document.querySelector('#content-template').content.querySelector('#content-item');
@@ -58,15 +59,51 @@ function addVacation(item) {
 
 function getStartedData() {
   api.getData().then(function (res) {
+    loaderHandler(res);
     return renderCountData(res, 0, 12);
   }).then(function (res) {
     return res.forEach(function (item) {
       addVacation(createVacation(item));
     });
   });
-}
+} // function getMoreData() {
+//     api.getData()
+//         .then(res => {
+//             loaderHandler(res)
+//             // return renderCountData(res, 0, 12)
+//         })
+//         // .then(res => res.forEach(item => {
+//         //     addVacation(createVacation(item))
+//         // }))
+// }
 
-getStartedData(); // количество отображаемых карточек
+
+getStartedData();
+
+function loaderHandler(res) {
+  if (res.length <= 12) btnLoader.style.display = 'none'; // else {
+  // }
+} // слайс не работает
+
+
+btnLoader.addEventListener('click', function () {
+  var actualCountCards = Number(document.querySelectorAll('#content-item').length);
+  console.log(actualCountCards); //12
+  // getStartedData()
+
+  api.getData().then(function (res) {
+    return filterData(res);
+  }) // .then(res => console.log(res))  //15
+  .then(function (res) {
+    return res.slice(actualCountCards, 12);
+  }) //15
+  // .then(res => console.log(res))
+  .then(function (res) {
+    return res.forEach(function (item) {
+      addVacation(createVacation(item));
+    });
+  });
+}); // количество отображаемых карточек
 
 function renderCountData(res, from) {
   var to = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
@@ -104,6 +141,10 @@ btnSearch.forEach(function (item) {
       return filterData(res);
     }).then(function (res) {
       return renderCountData(res, 0, 12);
+    }).then(function (res) {
+      return res.forEach(function (item) {
+        addVacation(createVacation(item));
+      });
     });
   });
 });
@@ -123,6 +164,7 @@ switcher.addEventListener('click', function (evt) {
       item.style.color = "#fff";
     });
     document.querySelectorAll('#content-item').forEach(function (item) {
+      // console.log(item)
       item.querySelector('.content__vacation').style.color = "#fff";
       item.style.backgroundColor = "#19202D"; // console.log(item)
 
