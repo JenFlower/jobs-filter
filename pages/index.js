@@ -1,20 +1,17 @@
 import Api from '../scripts/Api.js'
 
 const switcher = document.querySelector('.switch-block__switcher')
-const filter = document.querySelector('.filter')
 const filterInput = [...document.querySelectorAll('.filter__input')]
 const main = document.querySelector('.main')
+const body = document.querySelector('.body')
+
 const header = document.querySelector('.header')
-const vacations = Array.from(document.querySelectorAll('#content-item'))
 const contentVacationList = document.querySelector('.content__list')
 const checkFullTime = document.querySelector('.filter__input_full-time')
 const inputLocation = document.querySelector('.filter__input_location')
 const commonFilter = document.querySelector('.filter__input_common')
-// const btnSearch = document.querySelector('.filter__submit_common')
 const btnSearch = [...document.querySelectorAll('.filter__input_submit')]
-const btnLoader = document.querySelector('.content__btn-loader')
 
-// console.log(btnSearch)
 function createVacation(item) {
     const templateVacation = document.querySelector('#content-template').content.querySelector('#content-item')
     const vacation = templateVacation.cloneNode(true)
@@ -36,76 +33,25 @@ function createVacation(item) {
     return vacation
 }
 
-// todo
-// не работает слайс
-
 const api = new Api()
 
 function addVacation(item) {
     return contentVacationList.append(item)
 }
 
-function getStartedData() {
+function drawCards() {
     api.getData()
         .then(res => {
-            loaderHandler(res)
-            return renderCountData(res, 0, 12)
+            contentVacationList.innerHTML = ''
+            return filterData(res)
         })
         .then(res => res.forEach(item => {
             addVacation(createVacation(item))
-            
+            checkTheme()   
         }))
+         
 }
-
-// function getMoreData() {
-//     api.getData()
-//         .then(res => {
-//             loaderHandler(res)
-//             // return renderCountData(res, 0, 12)
-//         })
-//         // .then(res => res.forEach(item => {
-//         //     addVacation(createVacation(item))
-            
-//         // }))
-// }
-
-getStartedData()
-
-
-function loaderHandler(res) {
-    if(res.length <= 12)
-        btnLoader.style.display = 'none'
-    // else {
-        
-        
-    // }
-    
-}
-
-// слайс не работает
-btnLoader.addEventListener('click', () => {
-    let actualCountCards = Number(document.querySelectorAll('#content-item').length)
-    console.log(actualCountCards) //12
-    // getStartedData()
-    api.getData()
-        .then(res => filterData(res))
-        // .then(res => console.log(res))  //15
-        .then(res => res.slice(actualCountCards, 12))   //15
-        // .then(res => console.log(res))
-        .then(res => res.forEach(item => {
-            addVacation(createVacation(item))
-        }))
-})
-
-// количество отображаемых карточек
-function renderCountData(res, from, to = 5) {
-    contentVacationList.innerHTML = ''
-    // res.forEach(item => {
-    //     addVacation(createVacation(item))
-    // })
-    return res.slice(from, to)
-}
-
+// получение стартовых данных
 
 
 function actualFilterStatus() {
@@ -131,45 +77,27 @@ function filterData(res) {
     
 }
 
-btnSearch.forEach(item => item.addEventListener('click', (evt) => {
-    evt.preventDefault()
-    api.getData()
-        .then(res => filterData(res))
-        .then(res => {
-            return renderCountData(res, 0, 12)
-        })
-        .then(res => res.forEach(item => {
-            addVacation(createVacation(item))
-        }))
-        
-}))
+
 
 function vacationHover(item, mouse, colorName) {
     item.querySelector('.content__vacation').addEventListener(mouse, (evt) => {
         evt.target.style.color = colorName
     })
 }
-
-
-
-switcher.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('switch-block__switcher_on')
-    // console.log(vacations)
-    if(evt.target.classList.contains('switch-block__switcher_on')) {
+function checkTheme() {
+    if(switcher.classList.contains('switch-block__switcher_on')){
         filterInput.forEach(item => {
             item.style.backgroundColor = "#19202D"
             item.style.color = "#fff"
         })
         
         document.querySelectorAll('#content-item').forEach(item => {
-            // console.log(item)
             item.querySelector('.content__vacation').style.color = "#fff"
             item.style.backgroundColor = "#19202D"
-            // console.log(item)
             vacationHover(item, 'mouseover', "#6E8098")
             vacationHover(item, 'mouseout', "#fff")
         })
-        main.style.backgroundColor = "#121721"
+        body.style.backgroundColor = "#121721"
         header.style.backgroundColor = "#121721"
         
     } else {
@@ -177,18 +105,27 @@ switcher.addEventListener('click', (evt) => {
             item.style.backgroundColor = "#fff"
             item.style.color = "#19202D"
         })
-        // console.log(vacations)
         document.querySelectorAll('#content-item').forEach(item => {
             item.querySelector('.content__vacation').style.color = "#19202D"
             item.style.backgroundColor = "#fff"
-            // console.log(item)
             vacationHover(item, 'mouseover', "#6E8098")
             vacationHover(item, 'mouseout', "#19202D")
         })
 
-        main.style.backgroundColor = "#F4F6F8"
+        body.style.backgroundColor = "#F4F6F8"
         header.style.backgroundColor = "#F2F2F2"
     }
+}
+
+switcher.addEventListener('click', (evt) => {
+    evt.target.classList.toggle('switch-block__switcher_on')
+    checkTheme()
 })
 
+btnSearch.forEach(item => item.addEventListener('click', (evt) => {    
+    evt.preventDefault()
+    drawCards()
+}))
 
+
+drawCards()
